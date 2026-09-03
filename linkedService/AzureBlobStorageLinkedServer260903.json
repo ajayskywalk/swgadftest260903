@@ -11,7 +11,7 @@
 					"referenceName": "kevalut260903linkedservice",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "swgsadftestKey20260903"
+				"secretName": "swgsadftestUATKey20260903"
 			}
 		}
 	},
