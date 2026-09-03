@@ -10,7 +10,7 @@
 		"AzureBlobStorageLinkedServer260903_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLinkedServer260903'",
-			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=swgsadftest20260903;EndpointSuffix=core.windows.net;"
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=swgsadftest20260903;"
 		},
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -146,7 +146,7 @@
 							"referenceName": "kevalut260903linkedservice",
 							"type": "LinkedServiceReference"
 						},
-						"secretName": "swgsadftestUATKey20260903"
+						"secretName": "swgsadftestKey20260903"
 					}
 				}
 			},
