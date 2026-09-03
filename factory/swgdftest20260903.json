@@ -1,0 +1,15 @@
+{
+	"name": "swgdftest20260903",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ed5fb457-577b-4802-933f-67ea54f170d0",
+		"tenantId": "968234d9-f4d7-429d-93da-3fe04bf3828b"
+	}
+}
