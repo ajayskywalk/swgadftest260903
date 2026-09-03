@@ -4,14 +4,14 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"connectionString": "DefaultEndpointsProtocol=https;AccountName=swgsadftest20260903;",
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=swgsadftestuat260903;",
 			"accountKey": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "kevalut260903linkedservice",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "swgsadftestKey20260903"
+				"secretName": "swgsadftestUATKey20260903"
 			}
 		}
 	},
