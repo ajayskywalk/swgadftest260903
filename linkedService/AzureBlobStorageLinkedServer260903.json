@@ -4,8 +4,15 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"serviceEndpoint": "https://swgsadftest20260903.blob.core.windows.net/",
-			"accountKind": "StorageV2"
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=swgsadftest20260903;",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "kevalut260903linkedservice",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "swgsadftestKey20260903"
+			}
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
