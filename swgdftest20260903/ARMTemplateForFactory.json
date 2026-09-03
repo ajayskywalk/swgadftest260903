@@ -9,7 +9,12 @@
 		},
 		"AzureBlobStorageLinkedServer260903_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLinkedServer260903'"
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLinkedServer260903'",
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=swgsadftest20260903;EndpointSuffix=core.windows.net;"
+		},
+		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvalut260903.vault.azure.net/"
 		}
 	},
 	"variables": {
@@ -134,7 +139,30 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorageLinkedServer260903_connectionString')]"
+					"connectionString": "[parameters('AzureBlobStorageLinkedServer260903_connectionString')]",
+					"accountKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "kevalut260903linkedservice",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "swgsadftestUATKey20260903"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/kevalut260903linkedservice')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/kevalut260903linkedservice')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('kevalut260903linkedservice_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []

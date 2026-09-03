@@ -6,7 +6,10 @@
 			"value": "swgdftest20260903"
 		},
 		"AzureBlobStorageLinkedServer260903_connectionString": {
-			"value": ""
+			"value": "DefaultEndpointsProtocol=https;AccountName=swgsadftest20260903;EndpointSuffix=core.windows.net;"
+		},
+		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
+			"value": "https://keyvalut260903.vault.azure.net/"
 		},
 		"containerUri": {
 			"value": ""
