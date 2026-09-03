@@ -1,6 +1,12 @@
 {
 	"name": "swgdftest20260903",
 	"properties": {
+		"globalParameters": {
+			"StorageAccountName": {
+				"type": "string",
+				"value": "swgsadftest20260903"
+			}
+		},
 		"trustModeClaimForMi": {
 			"value": "Disabled",
 			"editable": true
