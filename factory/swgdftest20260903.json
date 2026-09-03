@@ -5,6 +5,10 @@
 			"StorageAccountName": {
 				"type": "string",
 				"value": "swgsadftest20260903"
+			},
+			"SecretName": {
+				"type": "string",
+				"value": "swgsadftestKey20260903"
 			}
 		},
 		"trustModeClaimForMi": {
