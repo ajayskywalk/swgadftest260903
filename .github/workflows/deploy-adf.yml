@@ -43,12 +43,7 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ env.RESOURCE_GROUP }}
           template: ${{ env.FACTORY_FOLDER }}/ARMTemplateForFactory.json
-          parameters: ${{ env.FACTORY_FOLDER }}/ARMTemplateParametersForFactory.json
-
-      - name: Set Global Parameters for ${{ github.event.inputs.environment }}
-        run: |
-          az datafactory create \
-            --name "${{ env.FACTORY_NAME }}" \
-            --resource-group "${{ env.RESOURCE_GROUP }}" \
-            --location "$(az datafactory show --name "${{ env.FACTORY_NAME }}" --resource-group "${{ env.RESOURCE_GROUP }}" --query location -o tsv)" \
-            --global-parameters '{"StorageAccountName":{"type":"String","value":"${{ vars.STORAGE_ACCOUNT_NAME }}"},"SecretName":{"type":"String","value":"${{ vars.SECRET_NAME }}"}}'
+          parameters: >
+            ${{ env.FACTORY_FOLDER }}/ARMTemplateParametersForFactory.json
+            AzureBlobStorageLinkedServer260903_properties_parameters_accountName_defaultValue=${{ vars.STORAGE_ACCOUNT_NAME }}
+            AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue=${{ vars.SECRET_NAME }}
