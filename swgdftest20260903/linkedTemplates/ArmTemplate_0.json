@@ -15,6 +15,22 @@
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://keyvalut260903.vault.azure.net/"
+		},
+		"AzureBlobStorageLinkedServer260903_properties_parameters_accountName_type": {
+			"type": "string",
+			"defaultValue": "string"
+		},
+		"AzureBlobStorageLinkedServer260903_properties_parameters_accountName_defaultValue": {
+			"type": "string",
+			"defaultValue": "swgsadftest20260903"
+		},
+		"AzureBlobStorageLinkedServer260903_properties_parameters_secretName_type": {
+			"type": "string",
+			"defaultValue": "string"
+		},
+		"AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue": {
+			"type": "string",
+			"defaultValue": "swgsadftestKey20260903"
 		}
 	},
 	"variables": {
@@ -41,12 +57,12 @@
 			"properties": {
 				"parameters": {
 					"accountName": {
-						"type": "string",
-						"defaultValue": "swgsadftest20260903"
+						"type": "[parameters('AzureBlobStorageLinkedServer260903_properties_parameters_accountName_type')]",
+						"defaultValue": "[parameters('AzureBlobStorageLinkedServer260903_properties_parameters_accountName_defaultValue')]"
 					},
 					"secretName": {
-						"type": "string",
-						"defaultValue": "swgsadftestKey20260903"
+						"type": "[parameters('AzureBlobStorageLinkedServer260903_properties_parameters_secretName_type')]",
+						"defaultValue": "[parameters('AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue')]"
 					}
 				},
 				"annotations": [],

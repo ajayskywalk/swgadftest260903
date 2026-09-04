@@ -8,6 +8,18 @@
 		"AzureBlobStorageLinkedServer260903_connectionString": {
 			"value": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().accountName};"
 		},
+		"AzureBlobStorageLinkedServer260903_properties_parameters_accountName_type": {
+			"value": "string"
+		},
+		"AzureBlobStorageLinkedServer260903_properties_parameters_accountName_defaultValue": {
+			"value": "swgsadftest20260903"
+		},
+		"AzureBlobStorageLinkedServer260903_properties_parameters_secretName_type": {
+			"value": "string"
+		},
+		"AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue": {
+			"value": "swgsadftestKey20260903"
+		},
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"value": "https://keyvalut260903.vault.azure.net/"
 		}
