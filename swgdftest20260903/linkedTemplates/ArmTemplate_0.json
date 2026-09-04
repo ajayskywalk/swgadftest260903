@@ -10,7 +10,7 @@
 		"AzureBlobStorageLinkedServer260903_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLinkedServer260903'",
-			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{pipeline().globalParameters.StorageAccountName};"
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().accountName};"
 		},
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -39,6 +39,16 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"parameters": {
+					"accountName": {
+						"type": "string",
+						"defaultValue": "swgsadftest20260903"
+					},
+					"secretName": {
+						"type": "string",
+						"defaultValue": "swgsadftestKey20260903"
+					}
+				},
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
@@ -50,7 +60,7 @@
 							"type": "LinkedServiceReference"
 						},
 						"secretName": {
-							"value": "@pipeline().globalParameters.SecretName",
+							"value": "@linkedService().secretName",
 							"type": "Expression"
 						}
 					}
@@ -163,7 +173,8 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2026-09-04T05:12:53Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/TestFileDataSet')]",

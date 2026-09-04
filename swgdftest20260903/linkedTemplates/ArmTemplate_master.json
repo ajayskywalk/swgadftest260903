@@ -10,7 +10,7 @@
 		"AzureBlobStorageLinkedServer260903_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLinkedServer260903'",
-			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{pipeline().globalParameters.StorageAccountName};"
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().accountName};"
 		},
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"type": "string",
