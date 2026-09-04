@@ -11,6 +11,10 @@ on:
           - Production
           - UAT
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   RESOURCE_GROUP: ADF-Testing
   FACTORY_NAME: swgdftest20260903
