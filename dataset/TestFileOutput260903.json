@@ -14,5 +14,6 @@
 				"container": "outputcontainer"
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

@@ -1,19 +1,32 @@
 {
 	"name": "AzureBlobStorageLinkedServer260903",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"parameters": {
+			"accountName": {
+				"type": "string",
+				"defaultValue": "swgsadftest20260903"
+			},
+			"secretName": {
+				"type": "string",
+				"defaultValue": "swgsadftestKey20260903"
+			}
+		},
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"connectionString": "DefaultEndpointsProtocol=https;AccountName=@{pipeline().globalParameters.StorageAccountName};",
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().accountName};",
 			"accountKey": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "kevalut260903linkedservice",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "@pipeline().globalParameters.SecretName"
+				"secretName": {
+					"value": "@linkedService().secretName",
+					"type": "Expression"
+				}
 			}
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }
