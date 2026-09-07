@@ -3,7 +3,11 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorageLinkedServer260903",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"accountName": "swgsadftest20260903",
+				"secretName": "swgsadftestKey20260903"
+			}
 		},
 		"annotations": [],
 		"type": "Binary",
