@@ -8,13 +8,17 @@
 				"pipelineReference": {
 					"referenceName": "pipeline1",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"accountName": "swgsadftest20260903",
+					"wait": 15
 				}
 			}
 		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
-				"frequency": "Hour",
+				"frequency": "Day",
 				"interval": 1,
 				"startTime": "2026-09-07T12:00:00",
 				"timeZone": "India Standard Time"
