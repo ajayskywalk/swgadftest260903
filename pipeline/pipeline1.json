@@ -73,6 +73,10 @@
 			"accountName": {
 				"type": "string",
 				"defaultValue": "swgsadftest20260903"
+			},
+			"wait": {
+				"type": "int",
+				"defaultValue": 15
 			}
 		},
 		"annotations": [],
