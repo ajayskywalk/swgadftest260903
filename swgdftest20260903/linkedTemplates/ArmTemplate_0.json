@@ -223,7 +223,10 @@
 						"dependsOn": [],
 						"userProperties": [],
 						"typeProperties": {
-							"waitTimeInSeconds": 10
+							"waitTimeInSeconds": {
+								"value": "@pipeline().parameters.wait",
+								"type": "Expression"
+							}
 						}
 					}
 				],
@@ -234,6 +237,10 @@
 					"accountName": {
 						"type": "string",
 						"defaultValue": "swgsadftest20260903"
+					},
+					"wait": {
+						"type": "int",
+						"defaultValue": 15
 					}
 				},
 				"annotations": [],
