@@ -93,7 +93,11 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "AzureBlobStorageLinkedServer260903",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"accountName": "swgsadftest20260903",
+						"secretName": "swgsadftestKey20260903"
+					}
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -117,13 +121,18 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "AzureBlobStorageLinkedServer260903",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"accountName": "swgsadftest20260903",
+						"secretName": "swgsadftestKey20260903"
+					}
 				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
+						"fileName": "FileName11",
 						"folderPath": "outputdirectory",
 						"container": "outputcontainer"
 					}
@@ -142,7 +151,14 @@
 					{
 						"name": "CopyFile260309",
 						"type": "Copy",
-						"dependsOn": [],
+						"dependsOn": [
+							{
+								"activity": "Wait1",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
 						"policy": {
 							"timeout": "0.12:00:00",
 							"retry": 0,
@@ -184,17 +200,56 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 300
+						}
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
 				"annotations": [],
-				"lastPublishTime": "2026-09-04T05:12:53Z"
+				"lastPublishTime": "2026-09-04T12:57:37Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/TestFileDataSet')]",
 				"[concat(variables('factoryId'), '/datasets/TestFileOutput260903')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline1",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Hour",
+						"interval": 1,
+						"startTime": "2026-09-07T12:00:00",
+						"timeZone": "India Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
 			]
 		}
 	]

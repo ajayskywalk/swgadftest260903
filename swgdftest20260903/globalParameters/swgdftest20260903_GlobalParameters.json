@@ -1,1 +1,10 @@
-{}
+{
+	"StorageAccountName": {
+		"type": "String",
+		"value": "swgsadftestuat260903"
+	},
+	"SecretName": {
+		"type": "String",
+		"value": "swgsadftestUATKey20260903"
+	}
+}
