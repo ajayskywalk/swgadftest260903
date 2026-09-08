@@ -43,13 +43,19 @@
 				"inputs": [
 					{
 						"referenceName": "TestFileDataSet",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"accountName": "@pipeline().parameters.accountName"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "TestFileOutput260903",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"accountName": "@pipeline().parameters.accountName"
+						}
 					}
 				]
 			},
@@ -63,6 +69,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"accountName": {
+				"type": "string",
+				"defaultValue": "swgsadftest20260903"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2026-09-04T12:57:37Z"
 	},
