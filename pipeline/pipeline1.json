@@ -45,7 +45,7 @@
 						"referenceName": "TestFileDataSet",
 						"type": "DatasetReference",
 						"parameters": {
-							"accountName": "@pipeline().parameters.accountName"
+							"accountName": "swgsadftest20260903"
 						}
 					}
 				],
