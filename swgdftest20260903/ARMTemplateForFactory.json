@@ -86,7 +86,7 @@
 								"referenceName": "TestFileDataSet",
 								"type": "DatasetReference",
 								"parameters": {
-									"accountName": "@pipeline().parameters.accountName"
+									"accountName": "swgsadftest20260903"
 								}
 							}
 						],
@@ -106,7 +106,7 @@
 						"dependsOn": [],
 						"userProperties": [],
 						"typeProperties": {
-							"waitTimeInSeconds": 300
+							"waitTimeInSeconds": 10
 						}
 					}
 				],
