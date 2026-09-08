@@ -95,8 +95,14 @@
 					"referenceName": "AzureBlobStorageLinkedServer260903",
 					"type": "LinkedServiceReference",
 					"parameters": {
-						"accountName": "swgsadftest20260903",
+						"accountName": "@dataset().accountName",
 						"secretName": "swgsadftestKey20260903"
+					}
+				},
+				"parameters": {
+					"accountName": {
+						"type": "string",
+						"defaultValue": "swgsadftest20260903"
 					}
 				},
 				"annotations": [],
@@ -123,8 +129,14 @@
 					"referenceName": "AzureBlobStorageLinkedServer260903",
 					"type": "LinkedServiceReference",
 					"parameters": {
-						"accountName": "swgsadftest20260903",
+						"accountName": "@dataset().accountName",
 						"secretName": "swgsadftestKey20260903"
+					}
+				},
+				"parameters": {
+					"accountName": {
+						"type": "string",
+						"defaultValue": "swgsadftest20260903"
 					}
 				},
 				"annotations": [],
@@ -190,14 +202,18 @@
 							{
 								"referenceName": "TestFileDataSet",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"accountName": "@pipeline().parameters.accountName"
+								}
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "TestFileOutput260903",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"accountName": "@pipeline().parameters.accountName"
+								}
 							}
 						]
 					},
@@ -213,6 +229,12 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"accountName": {
+						"type": "string",
+						"defaultValue": "swgsadftest20260903"
+					}
 				},
 				"annotations": [],
 				"lastPublishTime": "2026-09-04T12:57:37Z"
