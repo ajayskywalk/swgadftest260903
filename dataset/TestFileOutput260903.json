@@ -5,8 +5,14 @@
 			"referenceName": "AzureBlobStorageLinkedServer260903",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"accountName": "swgsadftest20260903",
+				"accountName": "@dataset().accountName",
 				"secretName": "swgsadftestKey20260903"
+			}
+		},
+		"parameters": {
+			"accountName": {
+				"type": "string",
+				"defaultValue": "swgsadftest20260903"
 			}
 		},
 		"annotations": [],
