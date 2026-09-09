@@ -22,12 +22,6 @@
 		},
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"value": "https://keyvalut260903.vault.azure.net/"
-		},
-		"trigger1_properties_0_parameters_accountName": {
-			"value": "swgsadftest20260903"
-		},
-		"trigger1_properties_0_parameters_wait": {
-			"value": 15
 		}
 	}
 }
