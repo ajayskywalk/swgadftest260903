@@ -32,6 +32,14 @@
 			"type": "string",
 			"defaultValue": "https://keyvalut260903.vault.azure.net/"
 		},
+		"trigger1_properties_0_parameters_accountName": {
+			"type": "string",
+			"defaultValue": "swgsadftest20260903"
+		},
+		"trigger1_properties_0_parameters_wait": {
+			"type": "int",
+			"defaultValue": 15
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -76,6 +84,12 @@
 					},
 					"AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue": {
 						"value": "[parameters('AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue')]"
+					},
+					"trigger1_properties_0_parameters_accountName": {
+						"value": "[parameters('trigger1_properties_0_parameters_accountName')]"
+					},
+					"trigger1_properties_0_parameters_wait": {
+						"value": "[parameters('trigger1_properties_0_parameters_wait')]"
 					}
 				}
 			},

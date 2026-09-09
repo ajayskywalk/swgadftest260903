@@ -31,6 +31,14 @@
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://keyvalut260903.vault.azure.net/"
+		},
+		"trigger1_properties_0_parameters_accountName": {
+			"type": "string",
+			"defaultValue": "swgsadftest20260903"
+		},
+		"trigger1_properties_0_parameters_wait": {
+			"type": "int",
+			"defaultValue": 15
 		}
 	},
 	"variables": {
@@ -109,6 +117,86 @@
 							"waitTimeInSeconds": {
 								"value": "@pipeline().parameters.wait",
 								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Fail1",
+						"type": "Fail",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"message": "Deliberate failure for ADF email notification PoC (spike 37883)",
+							"errorCode": "PoC_Deliberate_Failure"
+						}
+					},
+					{
+						"name": "Notify_Success",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "CopyFile260309",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": true,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod-22.centralindia.logic.azure.com:443/workflows/0800987db96b4935bef2d59bf99b013f/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=OHy2jiFNhsAXogiiN2ktJj3M0ohyQQJOKUARKHwMdXM",
+							"body": {
+								"pipelineName": "@{pipeline().Pipeline}",
+								"pipelineRunId": "@{pipeline().RunId}",
+								"status": "Succeeded",
+								"timestamp": "@{utcnow()}",
+								"errorMessage": "",
+								"recipient": "ajay.gopalakrishnan@skywalkglobal.net"
+							}
+						}
+					},
+					{
+						"name": "Notify_Failure",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Fail1",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": true,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod-22.centralindia.logic.azure.com:443/workflows/0800987db96b4935bef2d59bf99b013f/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=OHy2jiFNhsAXogiiN2ktJj3M0ohyQQJOKUARKHwMdXM",
+							"body": {
+								"pipelineName": "@{pipeline().Pipeline}",
+								"pipelineRunId": "@{pipeline().RunId}",
+								"status": "Failed",
+								"timestamp": "@{utcnow()}",
+								"errorMessage": "@{activity('Fail1').Error.message}",
+								"recipient": "ajay.gopalakrishnan@skywalkglobal.net"
 							}
 						}
 					}
@@ -257,20 +345,23 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
 							"referenceName": "pipeline1",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"accountName": "[parameters('trigger1_properties_0_parameters_accountName')]",
+							"wait": "[parameters('trigger1_properties_0_parameters_wait')]"
+						}
 					}
 				],
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Hour",
+						"frequency": "Day",
 						"interval": 1,
 						"startTime": "2026-09-07T12:00:00",
 						"timeZone": "India Standard Time"
