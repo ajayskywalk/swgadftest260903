@@ -74,7 +74,14 @@
 			{
 				"name": "Fail1",
 				"type": "Fail",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "CopyFile260309",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"message": "Deliberate failure for ADF email notification PoC (spike 37883)",
