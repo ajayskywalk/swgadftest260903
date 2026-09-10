@@ -45,7 +45,10 @@
 						"referenceName": "TestFileDataSet",
 						"type": "DatasetReference",
 						"parameters": {
-							"accountName": "swgsadftest20260903"
+							"accountName": {
+								"value": "@pipeline().parameters.inputaccountname",
+								"type": "Expression"
+							}
 						}
 					}
 				],
@@ -150,6 +153,10 @@
 			"wait": {
 				"type": "int",
 				"defaultValue": 15
+			},
+			"inputaccountname": {
+				"type": "String",
+				"defaultValue": "swgsadftest20260903"
 			}
 		},
 		"annotations": [],
