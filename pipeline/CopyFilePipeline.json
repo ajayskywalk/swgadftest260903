@@ -142,7 +142,8 @@
 						"type": "Expression"
 					},
 					"authentication": {
-						"type": "MSI"
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
 					}
 				}
 			}
