@@ -103,12 +103,8 @@
 					},
 					"url": "https://prod-21.centralindia.logic.azure.com:443/workflows/0ee5a1f34b334afd825af545cd8e444c/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=DKQAkoVIifbgWYjYLr7EfuN9XICLr_Ds5zJovBlgN74",
 					"body": {
-						"pipelineName": "@{pipeline().Pipeline}",
-						"pipelineRunId": "@{pipeline().RunId}",
-						"status": "Failed",
-						"timestamp": "@{utcNow()}",
-						"errorMessage": "",
-						"recipient": "@{pipeline().parameters.NotifyEmailAddress}"
+						"value": "{\"pipelineName\":\"@{pipeline().Pipeline}\",\"pipelineRunId\":\"@{pipeline().RunId}\",\"status\":\"Failed\",\"timestamp\":\"@{utcNow()}\",\"errorMessage\":\"\",\"recipient\":\"@{pipeline().parameters.NotifyEmailAddress}\",\"emailsubject\":\"@{pipeline().Pipeline} completed successfully | Run ID: @{pipeline().RunId}\", \"emailbody\":\"@{pipeline().Pipeline} completed successfully | Run ID: @{pipeline().RunId}\"}",
+						"type": "Expression"
 					}
 				}
 			},
