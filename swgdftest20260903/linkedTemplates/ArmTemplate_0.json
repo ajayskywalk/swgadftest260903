@@ -64,8 +64,7 @@
 						"frequency": "Day",
 						"interval": 1,
 						"startTime": "2026-09-07T12:00:00",
-						"timeZone": "India Standard Time",
-						"schedule": {}
+						"timeZone": "India Standard Time"
 					}
 				}
 			},
@@ -251,23 +250,6 @@
 						}
 					},
 					{
-						"name": "Fail1",
-						"type": "Fail",
-						"dependsOn": [
-							{
-								"activity": "CopyFile260309",
-								"dependencyConditions": [
-									"Completed"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"message": "Deliberate failure for ADF email notification PoC (spike 37883)",
-							"errorCode": "PoC_Deliberate_Failure"
-						}
-					},
-					{
 						"name": "Notify_Success",
 						"type": "WebActivity",
 						"dependsOn": [
@@ -307,7 +289,7 @@
 						"type": "WebActivity",
 						"dependsOn": [
 							{
-								"activity": "Fail1",
+								"activity": "CopyFile260309",
 								"dependencyConditions": [
 									"Failed"
 								]
@@ -335,23 +317,6 @@
 								"errorMessage": "@{activity('Fail1').Error.message}",
 								"recipient": "ajay.gopalakrishnan@skywalkglobal.net"
 							}
-						}
-					},
-					{
-						"name": "Fail_AfterNotify",
-						"type": "Fail",
-						"dependsOn": [
-							{
-								"activity": "Notify_Failure",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"message": "Re-raising failure after sending failure notification, so the pipeline run correctly reports Failed (spike 37883 PoC).",
-							"errorCode": "PoC_Deliberate_Failure_ReRaised"
 						}
 					}
 				],
