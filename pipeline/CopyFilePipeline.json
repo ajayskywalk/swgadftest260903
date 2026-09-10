@@ -92,7 +92,7 @@
 					"timeout": "0.12:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
+					"secureOutput": true,
 					"secureInput": false
 				},
 				"userProperties": [],
@@ -103,12 +103,8 @@
 					},
 					"url": "https://prod-21.centralindia.logic.azure.com:443/workflows/0ee5a1f34b334afd825af545cd8e444c/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01",
 					"body": {
-						"value": "{\"recipient\":\"@{pipeline().parameters.NotifyEmailAddress}\",\"emailsubject\":\"@{pipeline().Pipeline} completed successfully | Run ID: @{pipeline().RunId}\", \"emailbody\":\"@{pipeline().Pipeline} completed successfully | Run ID: @{pipeline().RunId}\" }",
+						"value": "{\"recipient\":\"@{pipeline().parameters.NotifyEmailAddress}\",\"emailsubject\":\"@{pipeline().Pipeline} Failed | Run ID: @{pipeline().RunId}\", \"emailbody\":\"@{pipeline().Pipeline} completed successfully at @{convertFromUtc(utcNow(), 'Central Standard Time')} <br> Run ID: @{pipeline().RunId} <br> Errormessage : @{activity('CopyFile').error.message}\" }",
 						"type": "Expression"
-					},
-					"authentication": {
-						"type": "MSI",
-						"resource": "https://management.azure.com/"
 					}
 				}
 			},
@@ -127,7 +123,7 @@
 					"timeout": "0.12:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
+					"secureOutput": true,
 					"secureInput": false
 				},
 				"userProperties": [],
@@ -140,10 +136,6 @@
 					"body": {
 						"value": "{\"recipient\":\"@{pipeline().parameters.NotifyEmailAddress}\",\"emailsubject\":\"@{pipeline().Pipeline} Failed | Run ID: @{pipeline().RunId}\", \"emailbody\":\"@{pipeline().Pipeline} Failed at @{utcNow()} <br> Run ID: @{pipeline().RunId} <br> Errormessage : @{activity('CopyFile').error.message} <br> Time : @{utcNow()}\" }",
 						"type": "Expression"
-					},
-					"authentication": {
-						"type": "MSI",
-						"resource": "https://management.azure.com/"
 					}
 				}
 			}
