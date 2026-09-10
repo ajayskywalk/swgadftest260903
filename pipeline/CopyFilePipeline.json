@@ -105,10 +105,10 @@
 					"body": {
 						"pipelineName": "@{pipeline().Pipeline}",
 						"pipelineRunId": "@{pipeline().RunId}",
-						"status": "Succeeded",
-						"timestamp": "@{utcnow()}",
-						"errorMessage": "",
-						"recipient": "ajay.gopalakrishnan@skywalkglobal.net"
+						"status": "Failed",
+						"timestamp": "@{utcNow()}",
+						"errorMessage": "@{activity('CopyFile').error.message}",
+						"recipient": "@{pipeline().parameters.ToEmailAddress}"
 					}
 				}
 			},
@@ -142,8 +142,8 @@
 						"pipelineRunId": "@{pipeline().RunId}",
 						"status": "Failed",
 						"timestamp": "@{utcNow()}",
-						"errorMessage": "@{activity('CopyFile260309').error.message}",
-						"recipient": "ajay.gopalakrishnan@skywalkglobal.net"
+						"errorMessage": "@{activity('CopyFile').error.message}",
+						"recipient": "@{pipeline().parameters.ToEmailAddress}"
 					}
 				}
 			}
