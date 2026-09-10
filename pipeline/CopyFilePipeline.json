@@ -161,7 +161,7 @@
 				"type": "String",
 				"defaultValue": "swgsadftest20260903"
 			},
-			"ToEmailAddress": {
+			"NotifyEmailAddress": {
 				"type": "string",
 				"defaultValue": "agopalakrishnan@homesteaderslife.com"
 			}
