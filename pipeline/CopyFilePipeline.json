@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CopyFile260309",
+				"name": "CopyFile",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -46,7 +46,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"accountName": {
-								"value": "@pipeline().parameters.inputaccountname",
+								"value": "@pipeline().parameters.SourceAccountname",
 								"type": "Expression"
 							}
 						}
@@ -57,7 +57,10 @@
 						"referenceName": "TestFileOutput260903",
 						"type": "DatasetReference",
 						"parameters": {
-							"accountName": "@pipeline().parameters.accountName"
+							"accountName": {
+								"value": "@pipeline().parameters.DestinationAccountName",
+								"type": "Expression"
+							}
 						}
 					}
 				]
@@ -69,7 +72,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"waitTimeInSeconds": {
-						"value": "@pipeline().parameters.wait",
+						"value": "@pipeline().parameters.WaitSeconds",
 						"type": "Expression"
 					}
 				}
@@ -79,7 +82,7 @@
 				"type": "WebActivity",
 				"dependsOn": [
 					{
-						"activity": "CopyFile260309",
+						"activity": "CopyFile",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -114,7 +117,7 @@
 				"type": "WebActivity",
 				"dependsOn": [
 					{
-						"activity": "CopyFile260309",
+						"activity": "CopyFile",
 						"dependencyConditions": [
 							"Failed"
 						]
@@ -146,15 +149,15 @@
 			}
 		],
 		"parameters": {
-			"accountName": {
+			"DestinationAccountName": {
 				"type": "string",
 				"defaultValue": "swgsadftest20260903"
 			},
-			"wait": {
+			"WaitSeconds": {
 				"type": "int",
 				"defaultValue": 15
 			},
-			"inputaccountname": {
+			"SourceAccountname": {
 				"type": "String",
 				"defaultValue": "swgsadftest20260903"
 			}
