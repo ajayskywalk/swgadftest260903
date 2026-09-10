@@ -344,7 +344,7 @@
 					},
 					"ToEmailAddress": {
 						"type": "string",
-						"defaultValue": "ajay.gopalakrishnan@homesteaderslife.com"
+						"defaultValue": "agopalakrishnan@homesteaderslife.com"
 					}
 				},
 				"annotations": [],
