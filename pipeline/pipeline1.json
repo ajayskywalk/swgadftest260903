@@ -78,7 +78,7 @@
 					{
 						"activity": "CopyFile260309",
 						"dependencyConditions": [
-							"Failed"
+							"Succeeded"
 						]
 					}
 				],
@@ -113,7 +113,7 @@
 					{
 						"activity": "CopyFile260309",
 						"dependencyConditions": [
-							"Succeeded"
+							"Failed"
 						]
 					}
 				],
