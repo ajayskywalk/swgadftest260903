@@ -148,7 +148,7 @@
 								"pipelineRunId": "@{pipeline().RunId}",
 								"status": "Failed",
 								"timestamp": "@{utcNow()}",
-								"errorMessage": "@{activity('CopyFile').error.message}",
+								"errorMessage": "",
 								"recipient": "@{pipeline().parameters.ToEmailAddress}"
 							}
 						}
