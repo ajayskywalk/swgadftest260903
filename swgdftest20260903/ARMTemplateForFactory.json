@@ -176,8 +176,8 @@
 								"pipelineName": "@{pipeline().Pipeline}",
 								"pipelineRunId": "@{pipeline().RunId}",
 								"status": "Failed",
-								"timestamp": "@{utcnow()}",
-								"errorMessage": "@{activity('Fail1').Error.message}",
+								"timestamp": "@{utcNow()}",
+								"errorMessage": "@{activity('CopyFile260309').error.message}",
 								"recipient": "ajay.gopalakrishnan@skywalkglobal.net"
 							}
 						}
