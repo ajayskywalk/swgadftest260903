@@ -160,6 +160,10 @@
 			"SourceAccountname": {
 				"type": "String",
 				"defaultValue": "swgsadftest20260903"
+			},
+			"ToEmailAddress": {
+				"type": "string",
+				"defaultValue": "ajay.gopalakrishnan@homesteaderslife.com"
 			}
 		},
 		"annotations": [],
