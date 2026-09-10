@@ -108,7 +108,7 @@
 						"status": "Failed",
 						"timestamp": "@{utcNow()}",
 						"errorMessage": "",
-						"recipient": "@{pipeline().parameters.ToEmailAddress}"
+						"recipient": "@{pipeline().parameters.NotifyEmailAddress}"
 					}
 				}
 			},
