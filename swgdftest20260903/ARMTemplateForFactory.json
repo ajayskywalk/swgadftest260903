@@ -146,6 +146,10 @@
 							"body": {
 								"value": "{\"recipient\":\"@{pipeline().parameters.NotifyEmailAddress}\",\"emailsubject\":\"@{pipeline().Pipeline} Failed | Run ID: @{pipeline().RunId}\", \"emailbody\":\"@{pipeline().Pipeline} completed successfully at @{convertFromUtc(utcNow(), 'Central Standard Time')} <br> Run ID: @{pipeline().RunId} <br> Errormessage : @{activity('CopyFile').error.message}\" }",
 								"type": "Expression"
+							},
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://management.azure.com/"
 							}
 						}
 					},
@@ -177,6 +181,10 @@
 							"body": {
 								"value": "{\"recipient\":\"@{pipeline().parameters.NotifyEmailAddress}\",\"emailsubject\":\"@{pipeline().Pipeline} Failed | Run ID: @{pipeline().RunId}\", \"emailbody\":\"@{pipeline().Pipeline} Failed at @{convertFromUtc(utcNow(), 'Central Standard Time')} <br> Run ID: @{pipeline().RunId} <br> Errormessage : @{activity('CopyFile').error.message}\" }",
 								"type": "Expression"
+							},
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://management.azure.com/"
 							}
 						}
 					}
