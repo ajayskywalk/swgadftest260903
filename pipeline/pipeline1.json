@@ -72,30 +72,13 @@
 				}
 			},
 			{
-				"name": "Fail1",
-				"type": "Fail",
-				"dependsOn": [
-					{
-						"activity": "CopyFile260309",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"message": "Deliberate failure for ADF email notification PoC (spike 37883)",
-					"errorCode": "PoC_Deliberate_Failure"
-				}
-			},
-			{
 				"name": "Notify_Success",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
-						"activity": "Fail1",
+						"activity": "CopyFile260309",
 						"dependencyConditions": [
-							"Succeeded"
+							"Failed"
 						]
 					}
 				],
@@ -128,9 +111,9 @@
 				"type": "WebActivity",
 				"dependsOn": [
 					{
-						"activity": "Fail1",
+						"activity": "CopyFile260309",
 						"dependencyConditions": [
-							"Failed"
+							"Succeeded"
 						]
 					}
 				],
