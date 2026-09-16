@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "D:\\newshared",
+			"host": "\\\\172.16.30.242\\newshared",
 			"userId": "AzureAD\\AjayGopalakrishnan",
 			"password": {
 				"type": "AzureKeyVaultSecret",
