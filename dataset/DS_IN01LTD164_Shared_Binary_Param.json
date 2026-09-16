@@ -1,0 +1,22 @@
+{
+	"name": "DS_IN01LTD164_Shared_Binary_Param",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "FS_IN01LTD164_Shared",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "@dataset().fileName"
+			}
+		}
+	}
+}
