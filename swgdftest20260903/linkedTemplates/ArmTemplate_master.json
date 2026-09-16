@@ -44,6 +44,10 @@
 			"type": "string",
 			"defaultValue": "AzureAD\\AjayGopalakrishnan"
 		},
+		"REST_LogicApp_CopyFileNotify_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://prod-30.centralindia.logic.azure.com:443/workflows/faa58581ba73476d8eed711ec8a63ebd/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=A1Kd0PnymhcjXirZp0bDmxL4toN7uIUbwAJ3IrkBL9c"
+		},
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://keyvalut260903.vault.azure.net/"
@@ -77,6 +81,9 @@
 					},
 					"AzureBlobStorageLinkedServer260903_connectionString": {
 						"value": "[parameters('AzureBlobStorageLinkedServer260903_connectionString')]"
+					},
+					"REST_LogicApp_CopyFileNotify_properties_typeProperties_url": {
+						"value": "[parameters('REST_LogicApp_CopyFileNotify_properties_typeProperties_url')]"
 					},
 					"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 						"value": "[parameters('kevalut260903linkedservice_properties_typeProperties_baseUrl')]"

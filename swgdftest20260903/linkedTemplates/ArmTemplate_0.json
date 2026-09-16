@@ -12,6 +12,10 @@
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLinkedServer260903'",
 			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().accountName};"
 		},
+		"REST_LogicApp_CopyFileNotify_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://prod-30.centralindia.logic.azure.com:443/workflows/faa58581ba73476d8eed711ec8a63ebd/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=A1Kd0PnymhcjXirZp0bDmxL4toN7uIUbwAJ3IrkBL9c"
+		},
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://keyvalut260903.vault.azure.net/"
@@ -53,6 +57,21 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/REST_LogicApp_CopyFileNotify')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('REST_LogicApp_CopyFileNotify_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/kevalut260903linkedservice')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -96,6 +115,24 @@
 				"typeProperties": {}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_REST_LogicApp_CopyFileNotify')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "REST_LogicApp_CopyFileNotify",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/REST_LogicApp_CopyFileNotify')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureBlobStorageLinkedServer260903')]",
@@ -226,6 +263,36 @@
 				"typeProperties": {
 					"location": {
 						"type": "FileServerLocation"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/FS_IN01LTD164_Shared')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_IN01LTD164_Shared_Binary_Param')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "FS_IN01LTD164_Shared",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"fileName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation",
+						"fileName": {
+							"value": "@dataset().fileName",
+							"type": "Expression"
+						}
 					}
 				}
 			},
