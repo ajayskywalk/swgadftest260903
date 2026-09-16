@@ -1,0 +1,7 @@
+{
+	"name": "IN01LTD164-SHIR",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Self-hosted IR for on-prem file copy between IN01LTD164 shares"
+	}
+}
