@@ -31,6 +31,22 @@
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://keyvalut260903.vault.azure.net/"
+		},
+		"FS_IN01LTD164_Shared_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\IN01LTD164\\shared"
+		},
+		"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "agopalakrishnan@skywalkglobal.net"
+		},
+		"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\IN01LTD164\\newshared"
+		},
+		"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "agopalakrishnan@skywalkglobal.net"
 		}
 	},
 	"variables": {
@@ -527,6 +543,181 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/IN01LTD164-SHIR')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"description": "Self-hosted IR for on-prem file copy between IN01LTD164 shares",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FS_IN01LTD164_Shared')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "[parameters('FS_IN01LTD164_Shared_properties_typeProperties_host')]",
+					"userId": "[parameters('FS_IN01LTD164_Shared_properties_typeProperties_userId')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "kevalut260903linkedservice",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "syspassword"
+					}
+				},
+				"connectVia": {
+					"referenceName": "IN01LTD164-SHIR",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IN01LTD164-SHIR')]",
+				"[concat(variables('factoryId'), '/linkedServices/kevalut260903linkedservice')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FS_IN01LTD164_NewShared')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_host')]",
+					"userId": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_userId')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "kevalut260903linkedservice",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "syspassword"
+					}
+				},
+				"connectVia": {
+					"referenceName": "IN01LTD164-SHIR",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IN01LTD164-SHIR')]",
+				"[concat(variables('factoryId'), '/linkedServices/kevalut260903linkedservice')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_IN01LTD164_Shared_Binary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "FS_IN01LTD164_Shared",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/FS_IN01LTD164_Shared')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_IN01LTD164_NewShared_Binary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "FS_IN01LTD164_NewShared",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/FS_IN01LTD164_NewShared')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_Copy_IN01LTD164_Shared_to_NewShared')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CopyFile_Shared_to_NewShared",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "FileServerReadSettings",
+									"recursive": true
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "FileServerWriteSettings",
+									"copyBehavior": "PreserveHierarchy"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_IN01LTD164_Shared_Binary",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_IN01LTD164_NewShared_Binary",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_IN01LTD164_Shared_Binary')]",
+				"[concat(variables('factoryId'), '/datasets/DS_IN01LTD164_NewShared_Binary')]"
+			]
 		}
 	]
 }

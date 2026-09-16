@@ -32,6 +32,22 @@
 			"type": "string",
 			"defaultValue": "https://keyvalut260903.vault.azure.net/"
 		},
+		"FS_IN01LTD164_Shared_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\IN01LTD164\\shared"
+		},
+		"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "agopalakrishnan@skywalkglobal.net"
+		},
+		"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\IN01LTD164\\newshared"
+		},
+		"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "agopalakrishnan@skywalkglobal.net"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -76,6 +92,18 @@
 					},
 					"AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue": {
 						"value": "[parameters('AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue')]"
+					},
+					"FS_IN01LTD164_Shared_properties_typeProperties_host": {
+						"value": "[parameters('FS_IN01LTD164_Shared_properties_typeProperties_host')]"
+					},
+					"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
+						"value": "[parameters('FS_IN01LTD164_Shared_properties_typeProperties_userId')]"
+					},
+					"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
+						"value": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_host')]"
+					},
+					"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
+						"value": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_userId')]"
 					}
 				}
 			},

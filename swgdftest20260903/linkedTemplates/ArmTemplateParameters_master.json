@@ -23,6 +23,18 @@
 		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"value": "https://keyvalut260903.vault.azure.net/"
 		},
+		"FS_IN01LTD164_Shared_properties_typeProperties_host": {
+			"value": "\\\\IN01LTD164\\shared"
+		},
+		"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
+			"value": "agopalakrishnan@skywalkglobal.net"
+		},
+		"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
+			"value": "\\\\IN01LTD164\\newshared"
+		},
+		"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
+			"value": "agopalakrishnan@skywalkglobal.net"
+		},
 		"containerUri": {
 			"value": ""
 		},
