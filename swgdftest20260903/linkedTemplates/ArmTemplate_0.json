@@ -32,21 +32,21 @@
 			"type": "string",
 			"defaultValue": "swgsadftestKey20260903"
 		},
-		"FS_IN01LTD164_Shared_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "\\\\IN01LTD164\\shared"
-		},
-		"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "agopalakrishnan@skywalkglobal.net"
-		},
 		"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
 			"type": "string",
 			"defaultValue": "\\\\IN01LTD164\\newshared"
 		},
 		"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
 			"type": "string",
-			"defaultValue": "agopalakrishnan@skywalkglobal.net"
+			"defaultValue": "AzureAD\\AjayGopalakrishnan"
+		},
+		"FS_IN01LTD164_Shared_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\IN01LTD164\\shared"
+		},
+		"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "AzureAD\\AjayGopalakrishnan"
 		}
 	},
 	"variables": {
@@ -134,6 +134,35 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/FS_IN01LTD164_NewShared')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_host')]",
+					"userId": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_userId')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "kevalut260903linkedservice",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "syspassword"
+					}
+				},
+				"connectVia": {
+					"referenceName": "IN01LTD164-SHIR",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IN01LTD164-SHIR')]",
+				"[concat(variables('factoryId'), '/linkedServices/kevalut260903linkedservice')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/FS_IN01LTD164_Shared')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -163,32 +192,45 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/FS_IN01LTD164_NewShared')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/DS_IN01LTD164_NewShared_Binary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"annotations": [],
-				"type": "FileServer",
-				"typeProperties": {
-					"host": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_host')]",
-					"userId": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_userId')]",
-					"password": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "kevalut260903linkedservice",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "syspassword"
-					}
+				"linkedServiceName": {
+					"referenceName": "FS_IN01LTD164_NewShared",
+					"type": "LinkedServiceReference"
 				},
-				"connectVia": {
-					"referenceName": "IN01LTD164-SHIR",
-					"type": "IntegrationRuntimeReference"
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation"
+					}
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/IN01LTD164-SHIR')]",
-				"[concat(variables('factoryId'), '/linkedServices/kevalut260903linkedservice')]"
+				"[concat(variables('factoryId'), '/linkedServices/FS_IN01LTD164_NewShared')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_IN01LTD164_Shared_Binary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "FS_IN01LTD164_Shared",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/FS_IN01LTD164_Shared')]"
 			]
 		},
 		{
@@ -257,48 +299,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageLinkedServer260903')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_IN01LTD164_Shared_Binary')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "FS_IN01LTD164_Shared",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "FileServerLocation"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/FS_IN01LTD164_Shared')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_IN01LTD164_NewShared_Binary')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "FS_IN01LTD164_NewShared",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "FileServerLocation"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/FS_IN01LTD164_NewShared')]"
 			]
 		},
 		{

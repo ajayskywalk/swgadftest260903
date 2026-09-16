@@ -20,20 +20,20 @@
 		"AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue": {
 			"value": "swgsadftestKey20260903"
 		},
-		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
-			"value": "https://keyvalut260903.vault.azure.net/"
+		"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
+			"value": "\\\\IN01LTD164\\newshared"
+		},
+		"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
+			"value": "AzureAD\\AjayGopalakrishnan"
 		},
 		"FS_IN01LTD164_Shared_properties_typeProperties_host": {
 			"value": "\\\\IN01LTD164\\shared"
 		},
 		"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
-			"value": "agopalakrishnan@skywalkglobal.net"
+			"value": "AzureAD\\AjayGopalakrishnan"
 		},
-		"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
-			"value": "\\\\IN01LTD164\\newshared"
-		},
-		"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
-			"value": "agopalakrishnan@skywalkglobal.net"
+		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
+			"value": "https://keyvalut260903.vault.azure.net/"
 		},
 		"containerUri": {
 			"value": ""

@@ -28,9 +28,13 @@
 			"type": "string",
 			"defaultValue": "swgsadftestKey20260903"
 		},
-		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
+		"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
 			"type": "string",
-			"defaultValue": "https://keyvalut260903.vault.azure.net/"
+			"defaultValue": "\\\\IN01LTD164\\newshared"
+		},
+		"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "AzureAD\\AjayGopalakrishnan"
 		},
 		"FS_IN01LTD164_Shared_properties_typeProperties_host": {
 			"type": "string",
@@ -38,15 +42,11 @@
 		},
 		"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
 			"type": "string",
-			"defaultValue": "agopalakrishnan@skywalkglobal.net"
+			"defaultValue": "AzureAD\\AjayGopalakrishnan"
 		},
-		"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
+		"kevalut260903linkedservice_properties_typeProperties_baseUrl": {
 			"type": "string",
-			"defaultValue": "\\\\IN01LTD164\\newshared"
-		},
-		"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "agopalakrishnan@skywalkglobal.net"
+			"defaultValue": "https://keyvalut260903.vault.azure.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -93,17 +93,17 @@
 					"AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue": {
 						"value": "[parameters('AzureBlobStorageLinkedServer260903_properties_parameters_secretName_defaultValue')]"
 					},
-					"FS_IN01LTD164_Shared_properties_typeProperties_host": {
-						"value": "[parameters('FS_IN01LTD164_Shared_properties_typeProperties_host')]"
-					},
-					"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
-						"value": "[parameters('FS_IN01LTD164_Shared_properties_typeProperties_userId')]"
-					},
 					"FS_IN01LTD164_NewShared_properties_typeProperties_host": {
 						"value": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_host')]"
 					},
 					"FS_IN01LTD164_NewShared_properties_typeProperties_userId": {
 						"value": "[parameters('FS_IN01LTD164_NewShared_properties_typeProperties_userId')]"
+					},
+					"FS_IN01LTD164_Shared_properties_typeProperties_host": {
+						"value": "[parameters('FS_IN01LTD164_Shared_properties_typeProperties_host')]"
+					},
+					"FS_IN01LTD164_Shared_properties_typeProperties_userId": {
+						"value": "[parameters('FS_IN01LTD164_Shared_properties_typeProperties_userId')]"
 					}
 				}
 			},
