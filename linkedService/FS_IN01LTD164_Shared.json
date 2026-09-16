@@ -1,0 +1,23 @@
+{
+	"name": "FS_IN01LTD164_Shared",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "\\\\IN01LTD164\\shared",
+			"userId": "agopalakrishnan@skywalkglobal.net",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "kevalut260903linkedservice",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "syspassword"
+			}
+		},
+		"connectVia": {
+			"referenceName": "IN01LTD164-SHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
