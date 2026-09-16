@@ -5,7 +5,7 @@
 		"type": "FileServer",
 		"typeProperties": {
 			"host": "D:\\newshared",
-			"userId": "ajgopalakrishnan@skywalkglobal.net",
+			"userId": "ajay.gopalakrishnan@skywalkglobal.net",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
