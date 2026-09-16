@@ -4,8 +4,8 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "\\\\IN01LTD164\\newshared",
-			"userId": "agopalakrishnan@skywalkglobal.net",
+			"host": "D:\\newshared",
+			"userId": "ajgopalakrishnan@skywalkglobal.net",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
