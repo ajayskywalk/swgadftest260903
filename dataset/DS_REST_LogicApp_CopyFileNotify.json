@@ -1,0 +1,12 @@
+{
+	"name": "DS_REST_LogicApp_CopyFileNotify",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "REST_LogicApp_CopyFileNotify",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
