@@ -1,0 +1,16 @@
+{
+	"name": "DS_IN01LTD164_Shared_Binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "FS_IN01LTD164_Shared",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation"
+			}
+		}
+	}
+}
